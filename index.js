@@ -18,7 +18,7 @@ var server = http.createServer(async function (req, res) {   //create web server
             await execAsync("netstat -tulpn | grep 7860");
 
             // 表示已經佔用，準備關閉所有docker
-            await execAsync("docker stop $(docker ps -a -q)");
+//             await execAsync("docker stop $(docker ps -a -q)");
             await sleep(30000)
         }
         catch (e) {
