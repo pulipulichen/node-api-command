@@ -14,21 +14,31 @@ var server = http.createServer(async function (req, res) {   //create web server
         // set response content    
         res.write('ok');
 
-        try {
-            await execAsync("netstat -tulpn | grep 7860");
+//         try {
+//             await execAsync("netstat -tulpn | grep 7860");
 
-            // 表示已經佔用，準備關閉所有docker
-//             await execAsync("docker stop $(docker ps -a -q)");
-            await sleep(30000)
-        }
-        catch (e) {
-            // 沒被佔用
-            // console.log(e)
-        }
+//             // 表示已經佔用，準備關閉所有docker
+// //             await execAsync("docker stop $(docker ps -a -q)");
+//             await sleep(30000)
+//         }
+//         catch (e) {
+//             // 沒被佔用
+//             // console.log(e)
+//         }
             
 
+        await execAsync(__dirname + "/mute.sh"); // 關閉聲音
+
         await execAsync("xset dpms force off"); // 關螢幕
+
+        await sleep(5000)
+
+        await execAsync("xset dpms force off"); // 關螢幕
+        
+
         // await execAsync("systemctl hibernate"); // 休眠
+
+        // await execAsync("xset dpms force off"); // 關螢幕
 
         res.end();
 
