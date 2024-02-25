@@ -31,10 +31,45 @@ var server = http.createServer(async function (req, res) {   //create web server
 
         await execAsync("xset dpms force off"); // 關螢幕
 
-        await sleep(5000)
+        // await sleep(5000)
 
-        await execAsync("xset dpms force off"); // 關螢幕
+        // await execAsync("xset dpms force off"); // 關螢幕
         
+
+        // await execAsync("systemctl hibernate"); // 休眠
+
+        // await execAsync("xset dpms force off"); // 關螢幕
+
+        res.end();
+
+    }
+    else if (req.url == '/on') { //check the URL of the current request
+
+        // set response header
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+
+        // xset dpms force off
+        // set response content
+        res.write('ok');
+
+//         try {
+//             await execAsync("netstat -tulpn | grep 7860");
+
+//             // 表示已經佔用，準備關閉所有docker
+// //             await execAsync("docker stop $(docker ps -a -q)");
+//             await sleep(30000)
+//         }
+//         catch (e) {
+//             // 沒被佔用
+//             // console.log(e)
+//         }
+
+        await execAsync("xset dpms force on"); // 關螢幕
+
+        // await sleep(5000)
+
+        // await execAsync("xset dpms force off"); // 關螢幕
+
 
         // await execAsync("systemctl hibernate"); // 休眠
 
