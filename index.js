@@ -13,6 +13,11 @@ var server = http.createServer(async function (req, res) {   //create web server
         await execAsync("xset dpms force on"); // 開螢幕
 
     }
+    else if (req.url == '/mute') { //check the URL of the current request
+        
+        await execAsync(__dirname + "/mute.sh"); // 關閉聲音
+
+    }
     else if (req.url == '/') { //check the URL of the current request
         await execAsync(__dirname + "/mute.sh"); // 關閉聲音
         await execAsync("xset dpms force off"); // 關螢幕
